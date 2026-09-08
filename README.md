@@ -1,120 +1,90 @@
-\# My DevOps App
+ My DevOps App
 
+A production-style CI/CD pipeline that provisions cloud infrastructure with Terraform, builds and containerizes an application with Docker, and deploys it to Kubernetes on AWS EKS — fully automated through Jenkins.
 
+---
 
-A complete CI/CD pipeline project demonstrating automated build, infrastructure provisioning, and deployment using Jenkins, Terraform, Docker, and AWS EKS.
+ Overview
 
+This project demonstrates an end-to-end DevOps workflow: from a code push all the way to a live, publicly accessible application running on a managed Kubernetes cluster.
 
+Flow:
 
-\## 🏗️ Architecture
 
+---
 
+Tech Stack
 
+| Category | Tools |
+|---|---|
+| CI/CD | Jenkins |
+| Infrastructure as Code | Terraform |
+| Containerization | Docker |
+| Orchestration | Kubernetes (Amazon EKS) |
+| Cloud Provider | AWS (EKS, ELB, VPC, EC2) |
+| Application | Node.js |
 
+---
 
-\## 🛠️ Tech Stack
+ Project Structure
 
+my-devops-app/
+├── Dockerfile # Container image definition
+├── deployment.yaml # Kubernetes Deployment manifest
+├── service.yaml # Kubernetes Service (LoadBalancer)
+├── server.js # Application source
+├── package.json # Node.js dependencies
+└── screenshots/ # Project evidence
 
 
-\- \*\*CI/CD:\*\* Jenkins
+---
 
-\- \*\*Infrastructure as Code:\*\* Terraform
+How It Works
 
-\- \*\*Containerization:\*\* Docker
+1. **Provision** — Terraform spins up the VPC, EC2 (Jenkins server), IAM roles, and EKS cluster on AWS.
+2. **Build** — Jenkins pipeline triggers on code push, builds a Docker image of the application.
+3. **Push** — Docker image is pushed to Docker Hub.
+4. **Deploy** — Kubernetes manifests (`deployment.yaml`, `service.yaml`) deploy the app to the EKS cluster.
+5. **Expose** — A Kubernetes `LoadBalancer` service provisions an AWS ELB, exposing the app publicly.
 
-\- \*\*Orchestration:\*\* Kubernetes (Amazon EKS)
+---
 
-\- \*\*Cloud Provider:\*\* AWS (EKS, ELB, VPC)
+ Result
 
-\- \*\*App:\*\* Node.js
+The application is live and accessible via the AWS Load Balancer:
 
+Hello from my DevOps App! CI/CD pipeline working
 
 
-\## 📁 Project Structure
+---
 
+ Screenshots
 
+| App Running | Jenkins Setup |
+|---|---|
+| ![App Running](screenshots/app-running.png) | ![Jenkins Setup](screenshots/jenkins-setup.png) |
 
-\- `Dockerfile` — Container image definition
+| Docker Build & Run | Terraform Provisioning |
+|---|---|
+| ![Docker Build](screenshots/docker-build-run.png) | ![Terraform Init](screenshots/terraform-init.png) |
 
-\- `deployment.yaml` — Kubernetes Deployment manifest
+| GitHub Push |
+|---|
+| ![GitHub Push](screenshots/github-push.png) |
 
-\- `service.yaml` — Kubernetes Service (LoadBalancer) manifest
+---
 
-\- `server.js` — Application code
+ Key Learnings
 
-\- `package.json` — Node.js dependencies
+- Provisioning cloud infrastructure declaratively with Terraform
+- Building automated CI/CD pipelines with Jenkins
+- Containerizing applications with Docker
+- Deploying and exposing services on Kubernetes (EKS)
+- Debugging real-world AWS networking (Load Balancer types, security groups, IAM roles)
 
+---
 
+Author
 
-\## 🚀 How It Works
-
-
-
-1\. Jenkins pipeline triggers on code push
-
-2\. Docker image is built from the app source
-
-3\. Terraform provisions the EKS cluster and AWS infrastructure
-
-4\. Kubernetes deployment applies `deployment.yaml` and `service.yaml`
-
-5\. AWS Load Balancer exposes the app publicly
-
-
-
-\## ✅ Result
-
-
-
-App successfully deployed and accessible via AWS Load Balancer:
-
-
-
-
-
-\## 📸 Screenshots
-
-
-
-\### App Running
-
-!\[App Running](screenshots/app-running.png)
-
-
-
-\### Jenkins Setup
-
-!\[Jenkins Setup](screenshots/jenkins-setup.png)
-
-
-
-\### Docker Build \& Run
-
-!\[Docker Build](screenshots/docker-build-run.png)
-
-
-
-\### Terraform Provisioning
-
-!\[Terraform Init](screenshots/terraform-init.png)
-
-
-
-\### GitHub Push
-
-!\[GitHub Push](screenshots/github-push.png)
-
-
-
-\## 📌 Key Learnings
-
-
-
-\- Setting up EKS clusters with Terraform
-
-\- Writing Jenkins pipelines for automated CI/CD
-
-\- Kubernetes Deployment and Service configuration
-
-\- Exposing apps via AWS Load Balancer (ELB)
-
+**Thirulok**
+GitHub: [@Thirulok007](https://github.com/Thirulok007)
