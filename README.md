@@ -1,29 +1,29 @@
 
 ````markdown
-# Application Deployment using Docker, Terraform, AWS, DockerHub, Jenkins and Kubernetes
+Application Deployment using Docker, Terraform, AWS, DockerHub, Jenkins and Kubernetes
 
-## Objective
+ Objective
 
 Deploy the given application to a production-ready state using Docker, Terraform, AWS, DockerHub, Jenkins, Kubernetes and CI/CD.
 
 ---
 
-## Application
+ Application
 
-### Repository
+ Repository
 
 ```text
 https://github.com/Vennilavanguvi/Trend.git
 ````
 
-### Clone Repository
+Clone Repository
 
 ```bash
 git clone https://github.com/Vennilavanguvi/Trend.git
 cd Trend
 ```
 
-### Run Application
+Run Application
 
 ```bash
 npm install
@@ -37,8 +37,7 @@ http://localhost:3000
 ```
 
 ---
-
-## Tech Stack
+ Tech Stack
 
 | Category               | Tools                    |
 | ---------------------- | ------------------------ |
@@ -51,13 +50,13 @@ http://localhost:3000
 
 ---
 
-## Architecture
+Architecture
 
 GitHub → Jenkins → Docker → DockerHub → AWS EKS → Kubernetes → LoadBalancer → Application
 
 ---
 
-## Project Structure
+Project Structure
 
 ```text
 my-devops-app/
@@ -71,9 +70,8 @@ my-devops-app/
 
 ---
 
-## Version Control
-
-### Initialize Git
+Version Control
+ Initialize Git
 
 ```bash
 git init
@@ -90,14 +88,13 @@ git add .
 ```bash
 git commit -m "Initial commit"
 ```
-
-### Add Remote Repository
+Add Remote Repository
 
 ```bash
 git remote add origin <GITHUB_REPOSITORY_URL>
 ```
 
-### Push Code
+Push Code
 
 ```bash
 git branch -M main
@@ -106,7 +103,7 @@ git push -u origin main
 
 The complete application code was pushed to GitHub.
 
-### Git Ignore Files
+Git Ignore Files
 
 ```text
 .gitignore
@@ -115,31 +112,31 @@ The complete application code was pushed to GitHub.
 
 ---
 
-## Docker
+Docker
 
-### Create Dockerfile
+Create Dockerfile
 
 A Dockerfile was created to containerize the application.
 
-### Build Docker Image
+Build Docker Image
 
 ```bash
 docker build -t my-devops-app .
 ```
 
-### Check Docker Image
+Check Docker Image
 
 ```bash
 docker images
 ```
 
-### Run Docker Container
+Run Docker Container
 
 ```bash
 docker run -d -p 3000:3000 --name my-devops-app my-devops-app
 ```
 
-### Check Container
+Check Container
 
 ```bash
 docker ps
@@ -147,21 +144,21 @@ docker ps
 
 ---
 
-## DockerHub
+DockerHub
 
-### Login to DockerHub
+ Login to DockerHub
 
 ```bash
 docker login
 ```
 
-### Tag Docker Image
+ Tag Docker Image
 
 ```bash
 docker tag my-devops-app <DOCKERHUB_USERNAME>/my-devops-app
 ```
 
-### Push Docker Image
+Push Docker Image
 
 ```bash
 docker push <DOCKERHUB_USERNAME>/my-devops-app
@@ -171,11 +168,11 @@ The Docker image was pushed to DockerHub for deployment.
 
 ---
 
-## Terraform
+Terraform
 
 Terraform is used to provision the required AWS infrastructure.
 
-### Infrastructure
+Infrastructure
 
 * VPC
 * IAM
@@ -183,43 +180,41 @@ Terraform is used to provision the required AWS infrastructure.
 * Jenkins
 * EKS
 
-### Initialize Terraform
+Initialize Terraform
 
 ```bash
 terraform init
 ```
 
-### Validate Terraform
+Validate Terraform
 
 ```bash
 terraform validate
 ```
 
-### Create Plan
+ Create Plan
 
 ```bash
 terraform plan
 ```
 
-### Provision Infrastructure
+Provision Infrastructure
 
 ```bash
 terraform apply
 ```
 
 ---
-
-## AWS EC2
-
+ AWS EC2
 An AWS EC2 instance was configured for Jenkins and DevOps operations.
 
 ---
 
-## Jenkins
+Jenkins
 
 Jenkins was installed and configured on the AWS EC2 instance.
 
-### Required Plugins
+ Required Plugins
 
 * Git
 * Docker
@@ -230,7 +225,7 @@ Jenkins is used to automate the build, Docker image creation, DockerHub push and
 
 ---
 
-## GitHub Webhook
+ GitHub Webhook
 
 GitHub and Jenkins were integrated using a GitHub webhook.
 
@@ -246,11 +241,11 @@ The webhook automatically triggers the Jenkins pipeline when a new commit is pus
 
 ---
 
-## CI/CD Pipeline
+ CI/CD Pipeline
 
 A declarative Jenkins pipeline was created using `Jenkinsfile`.
 
-### Pipeline Stages
+Pipeline Stages
 
 ```text
 Checkout
@@ -266,17 +261,17 @@ Kubernetes Deploy
 
 ---
 
-## Kubernetes – AWS EKS
+ Kubernetes – AWS EKS
 
 The application is deployed using Kubernetes on AWS EKS.
 
-### Configure kubectl
+ Configure kubectl
 
 ```bash
 aws eks update-kubeconfig --region <REGION> --name <CLUSTER_NAME>
 ```
 
-### Check Kubernetes Nodes
+Check Kubernetes Nodes
 
 ```bash
 kubectl get nodes
@@ -284,23 +279,22 @@ kubectl get nodes
 
 ---
 
-## Kubernetes Deployment
+Kubernetes Deployment
 
 The application is deployed using `deployment.yaml`.
 
-### Apply Deployment
+ Apply Deployment
 
 ```bash
 kubectl apply -f deployment.yaml
 ```
 
-### Check Deployment
+Check Deployment
 
 ```bash
 kubectl get deployment
 ```
-
-### Check Pods
+ Check Pods
 
 ```bash
 kubectl get pods
@@ -308,25 +302,24 @@ kubectl get pods
 
 ---
 
-## Kubernetes Service
+Kubernetes Service
 
 The application is exposed using a Kubernetes LoadBalancer service.
 
-### Apply Service
+ Apply Service
 
 ```bash
 kubectl apply -f service.yaml
 ```
 
-### Check Service
+Check Service
 
 ```bash
 kubectl get svc
 ```
 
 ---
-
-## How It Works
+ How It Works
 
 1. **Provision** — Terraform spins up the VPC, EC2 (Jenkins server), IAM roles, and EKS cluster on AWS.
 2. **Build** — Jenkins pipeline triggers on code push and builds a Docker image of the application.
@@ -336,7 +329,7 @@ kubectl get svc
 
 ---
 
-## Monitoring
+Monitoring
 
 A monitoring system can be configured to check the health of the cluster and application.
 
@@ -350,7 +343,7 @@ The monitoring system can be used to monitor:
 
 ---
 
-## Result
+ Result
 
 The application is deployed using Docker, Jenkins CI/CD and Kubernetes on AWS.
 
@@ -362,7 +355,7 @@ Hello from my DevOps App! CI/CD pipeline working
 
 ---
 
-## Key Learnings
+ Key Learnings
 
 * Provisioning cloud infrastructure declaratively with Terraform
 * Building automated CI/CD pipelines with Jenkins
@@ -374,8 +367,7 @@ Hello from my DevOps App! CI/CD pipeline working
 
 ---
 
-
-## Screenshot Documentation
+ Screenshot Documentation
 
 The `screenshots/` folder contains the project implementation evidence, including:
 
